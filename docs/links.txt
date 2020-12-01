@@ -225,3 +225,13 @@ Links
     
 - Version 11 of Angular Now Available
   - https://blog.angular.io/version-11-of-angular-now-available-74721b7952f7
+
+------------------------------------------------------------
+ES2015 / ES6
+
+- import / export
+  - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export
+  - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import
+  
+- Class
+  

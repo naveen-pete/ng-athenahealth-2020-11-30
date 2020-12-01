@@ -86,3 +86,34 @@ before 2015
 Web App
 - Browser - HTML, CSS, JS 
 - cannot run TS
+
+01-Dec-20
+---------
+- Bootstrapping of Angular App
+
+- ng serve
+  1. TS - converts into - JS
+  2. Create bundles - webpack - generate new JS files (5)
+  3. Inject <script> tags in index.html
+  4. Host app on a web server (Angular Live Development Server)
+  
+- index.html
+- app.js
+- products.js
+- customers.js
+- 
+
+
+Features
+- Product management
+- Customer management
+- Order management
+- Payments
+- Shipping
+- ShoppingCart
+
+- Component - Search
+  - UI - HTML code - .html (template)
+  - Style - CSS code - .css
+  - Data - TS class - property - categories[] - .ts
+  - Behavior - TS class - method - search(searchText) - .ts
