@@ -1,5 +1,8 @@
 Links
 -----
+- CLI Overview and Command Reference
+  - https://angular.io/cli
+
 - Angular 10 Release
   - https://blog.angular.io/version-10-of-angular-now-available-78960babd41
   
@@ -219,3 +222,6 @@ Links
 - Angular Modules - My YouTube Video link
   - Using Modules in Angular | NgModules Tutorial
     - https://youtu.be/sDC3QwuwQH0
+    
+- Version 11 of Angular Now Available
+  - https://blog.angular.io/version-11-of-angular-now-available-74721b7952f7
