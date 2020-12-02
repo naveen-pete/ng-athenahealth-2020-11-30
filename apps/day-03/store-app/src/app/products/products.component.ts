@@ -6,15 +6,48 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./products.component.css']
 })
 export class ProductsComponent implements OnInit {
+  product: ProductModel = new ProductModel();
 
-  productId: number = 10;
-  productName: string = 'iPhone 12';   // should come from the server
-  productDescription: string = 'Smart phone from Apple';
-  productPrice: number = 100000;
-  productIsAvailable: boolean = true;
+  products: ProductModel[] = [
+    {
+      id: '10',
+      name: 'iPhone 12',
+      description: 'Smart phone from Apple',
+      price: 120000,
+      isAvailable: true
+    },
+    {
+      id: '20',
+      name: 'Samsung Galaxy 10',
+      description: 'Smart phone from Samsung',
+      price: 80000,
+      isAvailable: false
+    },
+    {
+      id: '30',
+      name: 'Google Pixel 4',
+      description: 'Smart phone from Google',
+      price: 75000,
+      isAvailable: true
+    }
+  ];
 
   constructor() { }
 
   ngOnInit(): void { }
 
+  onSubmit() {
+    console.log('Form submitted.');
+    console.log(this.product);
+    this.products.push(this.product);
+  }
+
+}
+
+class ProductModel {
+  id: string;
+  name: string;
+  description: string;
+  price: number;
+  isAvailable: boolean;
 }

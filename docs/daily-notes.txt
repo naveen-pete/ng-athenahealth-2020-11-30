@@ -117,3 +117,12 @@ Features
   - Style - CSS code - .css
   - Data - TS class - property - categories[] - .ts
   - Behavior - TS class - method - search(searchText) - .ts
+
+02-Dec-20
+---------
+Include Bootstrap 
+1. CDN url
+
+2. Install locally within my Angular App
+
+<div style="color: blue"></div>
