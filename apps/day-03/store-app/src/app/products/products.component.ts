@@ -7,25 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductsComponent implements OnInit {
 
+  productId: number = 10;
   productName: string = 'iPhone 12';   // should come from the server
+  productDescription: string = 'Smart phone from Apple';
   productPrice: number = 100000;
+  productIsAvailable: boolean = true;
 
-  constructor() {
-    // this.productName = 'Samsung Galaxy 10';
-  }
+  constructor() { }
 
-  ngOnInit(): void {
-  }
-
-  onSave() {
-    console.log('Product data saved..');
-  }
-
-  onSearch(event) {
-    console.log('event:', event.target.value);
-
-    // var searchText = event.target.value;
-    // issue http/ajax request to the backend, pass searchText to the server as a parameter
-  }
+  ngOnInit(): void { }
 
 }
