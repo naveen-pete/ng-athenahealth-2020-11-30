@@ -126,3 +126,6 @@ Include Bootstrap
 2. Install locally within my Angular App
 
 <div style="color: blue"></div>
+
+03-Dec-20
+---------
