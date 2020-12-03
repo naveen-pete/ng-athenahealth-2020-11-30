@@ -1,14 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 
+import { ProductModel } from '../models/product.model';
+
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css']
 })
 export class ProductsComponent implements OnInit {
-  showMessage: boolean = false;
-  product: ProductModel = new ProductModel();
-
   products: ProductModel[] = [
     {
       id: '10',
@@ -37,49 +36,18 @@ export class ProductsComponent implements OnInit {
 
   ngOnInit(): void { }
 
-  onSubmit() {
-    this.product.id = Date.now().toString();
-    this.products.unshift(this.product);
-    this.product = new ProductModel();
-    this.showMessage = true;
-
-    // var obj = this;
-
-    // setTimeout(function () {
-    //   obj.showMessage = false;
-    // }, 5000)
-
-    setTimeout(() => {
-      this.showMessage = false;
-    }, 5000)
-
+  onAddProduct(newProduct: ProductModel) {
+    this.products.unshift(newProduct);
   }
 
-  onDelete(productId: string) {
-    console.log('productId:', productId);
-    console.log(this.products);
-    if (confirm('Are you sure?')) {
-      const index = this.products.findIndex((p) => {
-        return p.id === productId;
-      });
+  onDeleteProduct(productId: string) {
+    const index = this.products.findIndex((p) => {
+      return p.id === productId;
+    });
 
-      // -1 - not found
-      // 0, 1 - found
-
-      console.log('index:', index);
-
-      if (index >= 0) {
-        this.products.splice(index, 1);
-      }
+    if (index >= 0) {
+      this.products.splice(index, 1);
     }
   }
 
-}
-
-class ProductModel {
-  id: string;
-  name: string;
-  description: string;
-  price: number;
-  isAvailable: boolean;
 }
