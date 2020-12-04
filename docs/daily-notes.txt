@@ -129,3 +129,54 @@ Include Bootstrap
 
 03-Dec-20
 ---------
+
+04-Dec-20
+---------
+- ProductDetailComponent
+  - name, image, price, seller, publisher, rating
+  - use the service
+  
+- ShoppingCartComponent
+  - name, image, price, seller
+  - use the service
+  
+- OrdersComponent
+  - name, image, price, seller
+  - use the service
+
+Issues
+- Duplicating the code
+- Violates SRP
+
+- Service (ProductsService)
+  - https://amazon.in/api/products/10
+  - ajax request to products api
+  
+  - Data service
+  
+- Tight coupling - use DI
+
+- EventEmitter - Component to Component interaction
+- Subject - Service to Component interaction
+
+Angular Forms
+1. Template-driven forms (FormsModule) - ngModel
+  - built-in validations
+  - code - html template
+  - less code
+2. Reactive forms (model-driven forms) (ReactiveFormsModule)
+  - custom validators
+  - code - ts
+  - unit-testable
+  - you have more control
+  - more code
+  
+- NgForm
+  - controls - object
+  - errors - object
+  - value - object
+  
+  - valid / invalid - boolean
+  - touched / untouched - boolean
+  - pristine / dirty - boolean
+  

@@ -243,5 +243,8 @@ ES2015 / ES6
 - Arrow functions
   - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions
   
+- Spread syntax
+  - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax
+  
 
   

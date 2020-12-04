@@ -1,52 +1,32 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 
 import { ProductModel } from '../models/product.model';
+import { ProductsService } from '../services/products.service';
 
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css']
 })
-export class ProductsComponent implements OnInit {
-  products: ProductModel[] = [
-    {
-      id: '10',
-      name: 'iPhone 12',
-      description: 'Smart phone from Apple',
-      price: 120000,
-      isAvailable: true
-    },
-    {
-      id: '20',
-      name: 'Samsung Galaxy 10',
-      description: 'Smart phone from Samsung',
-      price: 80000,
-      isAvailable: false
-    },
-    {
-      id: '30',
-      name: 'Google Pixel 4',
-      description: 'Smart phone from Google',
-      price: 75000,
-      isAvailable: true
-    }
-  ];
+export class ProductsComponent implements OnInit, OnDestroy {
+  products: ProductModel[] = [];
 
-  constructor() { }
+  private subUpdateProducts: Subscription;
 
-  ngOnInit(): void { }
+  constructor(private service: ProductsService) { }
 
-  onAddProduct(newProduct: ProductModel) {
-    this.products.unshift(newProduct);
+  ngOnInit(): void {
+    this.products = this.service.getAllProducts();
+
+    this.subUpdateProducts = this.service.updateProducts.subscribe(
+      (products: ProductModel[]) => this.products = products
+    );
   }
 
-  onDeleteProduct(productId: string) {
-    const index = this.products.findIndex((p) => {
-      return p.id === productId;
-    });
-
-    if (index >= 0) {
-      this.products.splice(index, 1);
+  ngOnDestroy() {
+    if (this.subUpdateProducts) {
+      this.subUpdateProducts.unsubscribe();
     }
   }
 
