@@ -36,6 +36,14 @@ export class ProductsService {
     return [...this.products];
   }
 
+  getProduct(id: string) {
+    const product = this.products.find((p) => {
+      return p.id === id;
+    });
+
+    return product;
+  }
+
   addProduct(product: ProductModel) {
     product.id = Date.now().toString();
     this.products.unshift(product);
