@@ -32,7 +32,6 @@ export class ProductsService {
   ];
 
   getAllProducts() {
-    // return this.products.slice();
     return [...this.products];
   }
 
@@ -51,15 +50,6 @@ export class ProductsService {
   }
 
   deleteProduct(id: string) {
-    // const index = this.products.findIndex((p) => {
-    //   return p.id === id;
-    // });
-
-    // if (index >= 0) {
-    //   this.products.splice(index, 1);
-    //   this.updateProducts.next([...this.products]);
-    // }
-
     this.products = this.products.filter(p => p.id !== id);
     this.updateProducts.next([...this.products]);
   }

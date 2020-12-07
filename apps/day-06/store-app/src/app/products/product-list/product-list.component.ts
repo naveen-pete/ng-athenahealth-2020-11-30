@@ -1,4 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { Subscription } from 'rxjs';
 
@@ -15,10 +16,12 @@ export class ProductListComponent implements OnInit, OnDestroy {
 
   private subUpdateProducts: Subscription;
 
-  constructor(private service: ProductsService) { }
+  constructor(
+    private router: Router,
+    private service: ProductsService
+  ) { }
 
   ngOnInit(): void {
-    console.log('ProductList.ngOnInit() invoked.');
     this.products = this.service.getAllProducts();
 
     this.subUpdateProducts = this.service.updateProducts.subscribe(
@@ -26,8 +29,11 @@ export class ProductListComponent implements OnInit, OnDestroy {
     );
   }
 
+  onAdd() {
+    this.router.navigate(['/products/new']);
+  }
+
   ngOnDestroy() {
-    console.log('ProductList.ngOnDestroy() invoked.');
     if (this.subUpdateProducts) {
       this.subUpdateProducts.unsubscribe();
     }

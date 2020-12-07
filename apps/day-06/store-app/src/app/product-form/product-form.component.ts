@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { ProductModel } from '../models/product.model';
 import { ProductsService } from '../services/products.service';
@@ -10,16 +11,31 @@ import { ProductsService } from '../services/products.service';
   styleUrls: ['./product-form.component.css']
 })
 export class ProductFormComponent implements OnInit {
-  showMessage: boolean = false;
+  id: string;
+  addNew = true;
+
   product: ProductModel = new ProductModel();
   @ViewChild('productForm') form: NgForm;
 
-  constructor(private service: ProductsService) { }
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private service: ProductsService
+  ) { }
 
   ngOnInit(): void {
-    // service.getProduct(id);
-    // this.product.name = 'iPhone';
-    // this.product.description = 'A smart phone from Apple';
+    this.route.paramMap.subscribe((map) => {
+      if (map.get('id')) {
+        this.id = map.get('id');
+        this.product = this.service.getProduct(this.id);
+
+        if (this.product) {
+          this.addNew = false;
+        } else {
+          this.product = new ProductModel();
+        }
+      }
+    });
   }
 
   onSubmit() {
@@ -28,23 +44,21 @@ export class ProductFormComponent implements OnInit {
       return;
     }
 
-    console.log('Form submitted..');
-    console.log('form:', this.form.value);
-
     const newProduct = {
       ...this.form.value,
       // price: parseInt(this.form.value.price)
       price: +this.form.value.price
     };
-    console.log('newProduct:', newProduct);
-    this.service.addProduct(newProduct);
 
-    this.form.reset();
-    this.showMessage = true;
-
-    setTimeout(() => {
-      this.showMessage = false;
-    }, 5000)
+    if (this.addNew) {
+      this.service.addProduct(newProduct);
+      // show products
+      this.router.navigate(['/products']);
+    } else {
+      console.log('Call service.updateProduct() method.');
+      // show product detail
+      this.router.navigate(['/products', this.id]);
+    }
 
   }
 
