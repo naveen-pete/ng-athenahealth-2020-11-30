@@ -246,5 +246,11 @@ ES2015 / ES6
 - Spread syntax
   - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax
   
+------------------------------------------------------------
+Debugging
+- Augury 
+  - Chrome Extension
+    - https://chrome.google.com/webstore/detail/augury/elgalmkoelokbchhkhacckoklkejnhcd?hl=en
 
-  
+  - Firefox Extension
+    - https://addons.mozilla.org/en-US/firefox/addon/angular-augury/
