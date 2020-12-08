@@ -1,0 +1,37 @@
+{
+  "-MO1gFVVtEnvE8ELhtZV": {
+    "description": "p200 desc",
+    "isAvailable": true,
+    "name": "p200",
+    "price": 200
+  },
+  "-MO1glOEBLK1_WVADbgc": {
+    "description": "p300 desc",
+    "isAvailable": false,
+    "name": "p300",
+    "price": 300
+  },
+  "-MO1hEsEwmuLErUmi4QD": {
+    "description": "p100 desc",
+    "isAvailable": false,
+    "name": "p100",
+    "price": 100
+  }
+}
+
+[
+  {
+    "id": "-MO1gFVVtEnvE8ELhtZV",
+    "description": "p200 desc",
+    "isAvailable": true,
+    "name": "p200",
+    "price": 200
+  },
+  {
+    "id": "-MO1glOEBLK1_WVADbgc",
+    "description": "p300 desc",
+    "isAvailable": false,
+    "name": "p300",
+    "price": 300
+  }
+]

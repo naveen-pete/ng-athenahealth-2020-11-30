@@ -47,19 +47,12 @@ export class ProductFormComponent implements OnInit {
     const product = {
       ...this.form.value,
       price: +this.form.value.price,
-      isAvailable: this.form.value.isAvailable || false
+      isAvailable: this.product.isAvailable || false
     };
 
     if (this.addNew) {
-      this.service.addProduct(product).subscribe(
-        () => {
-          this.router.navigate(['/products']);
-        },   // success callback
-        (error) => {
-          console.log('Add product failed.');
-          console.log('Error:', error);
-        }
-      );
+      this.service.addProduct(product);
+      this.router.navigate(['/products']);
     } else {
       this.service.updateProduct(this.id, product);
       this.router.navigate(['/products', this.id]);

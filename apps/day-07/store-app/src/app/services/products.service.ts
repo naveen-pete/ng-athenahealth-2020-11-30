@@ -1,52 +1,69 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { Observable, Subject } from 'rxjs';
+import { map, tap } from 'rxjs/operators';
 
 import { ProductModel } from '../models/product.model';
 
 @Injectable()
 export class ProductsService {
+  apiUrl = 'https://store-app-project-6f12d-default-rtdb.firebaseio.com/products';
   updateProducts = new Subject<ProductModel[]>();
 
-  private products: ProductModel[] = [
-    {
-      id: '10',
-      name: 'iPhone 12',
-      description: 'Smart phone from Apple',
-      price: 120000,
-      isAvailable: true
-    },
-    {
-      id: '20',
-      name: 'Samsung Galaxy 10',
-      description: 'Smart phone from Samsung',
-      price: 80000,
-      isAvailable: false
-    },
-    {
-      id: '30',
-      name: 'Google Pixel 4',
-      description: 'Smart phone from Google',
-      price: 75000,
-      isAvailable: true
-    }
-  ];
+  private products: ProductModel[] = [];
 
-  getAllProducts() {
-    return [...this.products];
+  constructor(private http: HttpClient) { }
+
+  getAllProducts(): Observable<ProductModel[]> {
+    return this.http.get(`${this.apiUrl}.json`).pipe(
+      map((responseData: any) => {
+        if (!responseData) {
+          return [];
+        }
+
+        const products: ProductModel[] = [];
+        const keys = Object.keys(responseData);
+        keys.forEach((key) => {
+          const product: ProductModel = {
+            ...responseData[key],
+            id: key
+          };
+          products.push(product);
+        })
+        return products;
+      }),
+      tap((products: ProductModel[]) => {
+        this.products = [...products];
+      })
+    );
   }
 
-  getProduct(id: string) {
-    const product = this.products.find((p) => {
-      return p.id === id;
-    });
-
-    return product;
+  getProduct(id: string): Observable<ProductModel> {
+    return this.http.get<ProductModel>(`${this.apiUrl}/${id}.json`)
+      .pipe(
+        map((responseData: any) => {
+          const product: ProductModel = {
+            ...responseData,
+            id: id
+          }
+          return product;
+        })
+      );
   }
 
-  addProduct(product: ProductModel) {
-    product.id = Date.now().toString();
-    this.products.unshift(product);
-    this.updateProducts.next([...this.products]);
+  addProduct(product: ProductModel): Observable<any> {
+    return this.http.post(`${this.apiUrl}.json`, product).pipe(
+      tap((responseData: any) => {
+        const newProduct: ProductModel = {
+          ...product,
+          id: responseData.name
+        };
+
+        this.products = [...this.products, newProduct];
+
+        this.updateProducts.next(this.products);
+      })
+    );
   }
 
   updateProduct(id: string, product: ProductModel) {

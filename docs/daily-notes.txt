@@ -180,3 +180,11 @@ Angular Forms
   - touched / untouched - boolean
   - pristine / dirty - boolean
   
+08-Dec-2020
+-----------
+Operation - HTTP Verb   - Payload (body, qs, url params) - HttpClient
+Create   -  POST        - {}                             - HttpClient.post()
+Read All -  GET                                          - HttpClient.get()
+Read One -  GET         - id                             - HttpClient.get()
+Update   -  PUT / PATCH - id, {}                         - HttpClient.put() / HttpClient.patch()
+Delete   -  DELETE      - id                             - HttpClient.delete()
