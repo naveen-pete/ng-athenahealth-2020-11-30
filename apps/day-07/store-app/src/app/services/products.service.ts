@@ -49,6 +49,16 @@ export class ProductsService {
     this.updateProducts.next([...this.products]);
   }
 
+  updateProduct(id: string, product: ProductModel) {
+    console.log('id:', id);
+    const updatedProduct = { ...product, id: id };
+    console.log('product', updatedProduct);
+    this.products = this.products.map(
+      p => p.id === id ? updatedProduct : p
+    );
+    this.updateProducts.next(this.products);
+  }
+
   deleteProduct(id: string) {
     this.products = this.products.filter(p => p.id !== id);
     this.updateProducts.next([...this.products]);

@@ -44,19 +44,17 @@ export class ProductFormComponent implements OnInit {
       return;
     }
 
-    const newProduct = {
+    const product = {
       ...this.form.value,
-      // price: parseInt(this.form.value.price)
-      price: +this.form.value.price
+      price: +this.form.value.price,
+      isAvailable: this.product.isAvailable || false
     };
 
     if (this.addNew) {
-      this.service.addProduct(newProduct);
-      // show products
+      this.service.addProduct(product);
       this.router.navigate(['/products']);
     } else {
-      console.log('Call service.updateProduct() method.');
-      // show product detail
+      this.service.updateProduct(this.id, product);
       this.router.navigate(['/products', this.id]);
     }
 
