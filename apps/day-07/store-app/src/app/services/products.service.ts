@@ -50,9 +50,7 @@ export class ProductsService {
   }
 
   updateProduct(id: string, product: ProductModel) {
-    console.log('id:', id);
     const updatedProduct = { ...product, id: id };
-    console.log('product', updatedProduct);
     this.products = this.products.map(
       p => p.id === id ? updatedProduct : p
     );
