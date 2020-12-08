@@ -21,19 +21,22 @@ import { AppRoutingModule } from './app-routing.module';
   declarations: [
     AppComponent,
     HeaderComponent,
-    ProductsComponent,
-    ProductDetailComponent,
-    ProductFormComponent,
+
     HomeComponent,
     SignUpComponent,
     LoginComponent,
     NotFoundComponent,
-    ProductListComponent
+
+    ProductsComponent,
+    ProductListComponent,
+    ProductDetailComponent,
+    ProductFormComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
+
     AppRoutingModule
   ],
   providers: [ProductsService],
