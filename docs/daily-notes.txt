@@ -188,3 +188,12 @@ Read All -  GET                                          - HttpClient.get()
 Read One -  GET         - id                             - HttpClient.get()
 Update   -  PUT / PATCH - id, {}                         - HttpClient.put() / HttpClient.patch()
 Delete   -  DELETE      - id                             - HttpClient.delete()
+
+09-Dec-2020
+-----------
+Authentication (Firebase)
+- sign up a new user
+  - https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=[API_KEY]
+  
+- sign in 
+  - https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=[API_KEY]
