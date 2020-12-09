@@ -29,3 +29,5 @@ export class NotificationComponent implements OnInit {
 //   this.message = data.message;
 //   this.type = data.type;
 // }
+
+// ES6 => destructuring assignment

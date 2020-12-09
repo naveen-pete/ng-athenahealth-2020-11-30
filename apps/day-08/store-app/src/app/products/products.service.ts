@@ -4,10 +4,11 @@ import { Observable, Subject } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 
 import { ProductModel } from './product.model';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class ProductsService {
-  apiUrl = 'https://store-app-project-6f12d-default-rtdb.firebaseio.com/products';
+  apiUrl = `${environment.dataApiUrl}/products`;
   updateProducts = new Subject<ProductModel[]>();
 
   private products: ProductModel[] = [];

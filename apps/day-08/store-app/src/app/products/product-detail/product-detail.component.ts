@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { switchMap } from 'rxjs/operators';
 
 import { ProductModel } from '../product.model';
 import { ProductsService } from '../products.service';
@@ -11,6 +12,8 @@ import { ProductsService } from '../products.service';
 })
 export class ProductDetailComponent implements OnInit {
   id: string;
+  isLoading = false;
+  // product: ProductModel = new ProductModel();
   product: ProductModel;
 
   constructor(
@@ -20,18 +23,23 @@ export class ProductDetailComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe((map) => {
-      this.id = map.get('id');
-      this.service.getProduct(this.id).subscribe(
-        (product) => {
-          this.product = product;
-        },
-        (error) => {
-          console.log('Get product failed.');
-          console.log('Error:', error);
-        }
-      );
-    });
+    this.route.paramMap.pipe(
+      switchMap((map) => {
+        this.id = map.get('id');
+        this.isLoading = true;
+        return this.service.getProduct(this.id)
+      })
+    ).subscribe(
+      (product) => {
+        this.product = product;
+        this.isLoading = false;
+      },
+      (error) => {
+        console.log('Get product failed.');
+        console.log('Error:', error);
+        this.isLoading = false;
+      }
+    );
   }
 
   onEdit() {
