@@ -4,7 +4,9 @@
 
 export const environment = {
   production: false,
-  dataApiUrl: 'https://store-app-project-6f12d-default-rtdb.firebaseio.com'
+  dataApiUrl: 'https://store-app-project-6f12d-default-rtdb.firebaseio.com',
+  authApiUrl: 'https://identitytoolkit.googleapis.com/v1/accounts',
+  firebaseApiKey: 'AIzaSyDikY1LiUOWsydEdqH25tc_LmH3RDOmq9w'
 };
 
 /*
