@@ -6,10 +6,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { ProductsComponent } from './products/products.component';
-import { ProductDetailComponent } from './product-detail/product-detail.component';
-import { ProductFormComponent } from './product-form/product-form.component';
+import { ProductDetailComponent } from './products/product-detail/product-detail.component';
+import { ProductFormComponent } from './products/product-form/product-form.component';
 
-import { ProductsService } from './services/products.service';
+import { ProductsService } from './products/products.service';
 import { HomeComponent } from './home/home.component';
 import { SignUpComponent } from './auth/sign-up/sign-up.component';
 import { LoginComponent } from './auth/login/login.component';
