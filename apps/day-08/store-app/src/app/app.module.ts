@@ -17,6 +17,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { ProductListComponent } from './products/product-list/product-list.component';
 
 import { AppRoutingModule } from './app-routing.module';
+import { NotificationComponent } from './notification/notification.component';
+import { SpinnerComponent } from './spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { AppRoutingModule } from './app-routing.module';
     ProductsComponent,
     ProductListComponent,
     ProductDetailComponent,
-    ProductFormComponent
+    ProductFormComponent,
+    NotificationComponent,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,

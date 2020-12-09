@@ -5,6 +5,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { SignUpComponent } from './auth/sign-up/sign-up.component';
 import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { NotificationComponent } from './notification/notification.component';
 import { ProductDetailComponent } from './products/product-detail/product-detail.component';
 import { ProductFormComponent } from './products/product-form/product-form.component';
 import { ProductsComponent } from './products/products.component';
@@ -24,6 +25,13 @@ const appRoutes: Routes = [
 
   {
     path: 'products', component: ProductsComponent, children: [
+      // {
+      //   path: '', component: NotificationComponent, data: {
+      //     header: 'Note!',
+      //     message: 'Use \'Add New Product\' button to create a product. Select a product to view its details.',
+      //     type: 'info'
+      //   }
+      // },
       { path: 'new', component: ProductFormComponent },
       { path: ':id', component: ProductDetailComponent },
       { path: ':id/edit', component: ProductFormComponent },
@@ -33,11 +41,14 @@ const appRoutes: Routes = [
   { path: 'sign-up', component: SignUpComponent },
   { path: 'login', component: LoginComponent },
 
-  // solution 1 - not found component
   { path: '**', component: NotFoundComponent }
-
-  // solution 2 - redirect to home
-  // { path: '**', redirectTo: '' }
+  // {
+  //   path: '**', component: NotificationComponent, data: {
+  //     header: 'Sorry!',
+  //     message: '404 - Page not found.',
+  //     type: 'danger'
+  //   }
+  // }
 ];
 
 @NgModule({
