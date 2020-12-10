@@ -52,9 +52,17 @@
               </div>
             </div>
 
-            <button type="submit" class="btn btn-primary btn-block" [disabled]="!form.valid">Sign up</button>
+            <div class="text-center" *ngIf="!isLoading">
+              <button type="submit" class="btn btn-primary btn-block" [disabled]="!form.valid">Sign up</button>
+            </div>
+
+            <app-spinner *ngIf="isLoading"></app-spinner>
           </form>
         </div>
+      </div>
+
+      <div class="alert alert-danger mx-auto" style="max-width: 30rem;" *ngIf="!isLoading && errorMessage">
+        {{ errorMessage }}
       </div>
 
     </div>
