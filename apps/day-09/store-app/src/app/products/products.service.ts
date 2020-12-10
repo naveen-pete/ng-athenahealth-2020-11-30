@@ -6,6 +6,7 @@ import { map, tap } from 'rxjs/operators';
 import { ProductModel } from './product.model';
 import { environment } from '../../environments/environment';
 
+
 @Injectable()
 export class ProductsService {
   apiUrl = `${environment.dataApiUrl}/products`;
@@ -13,7 +14,9 @@ export class ProductsService {
 
   private products: ProductModel[] = [];
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient
+  ) { }
 
   getAllProducts(): Observable<ProductModel[]> {
     return this.http.get(`${this.apiUrl}.json`).pipe(

@@ -197,3 +197,6 @@ Authentication (Firebase)
   
 - sign in 
   - https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=[API_KEY]
+
+10-Dec-2020
+-----------

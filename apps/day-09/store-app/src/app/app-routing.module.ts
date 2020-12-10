@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthGuard } from './auth/auth.guard';
 
 import { LoginComponent } from './auth/login/login.component';
 import { SignUpComponent } from './auth/sign-up/sign-up.component';
@@ -23,7 +24,7 @@ const appRoutes: Routes = [
   { path: '', component: HomeComponent },
 
   {
-    path: 'products', component: ProductsComponent, children: [
+    path: 'products', canActivate: [AuthGuard], component: ProductsComponent, children: [
       {
         path: '', component: NotificationComponent, data: {
           header: 'Note!',

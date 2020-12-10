@@ -26,9 +26,10 @@ export class AuthService {
   signUp(authData: AuthData) {
     return this.http.post<AuthResponseData>(`${environment.authApiUrl}:signUp?key=${environment.firebaseApiKey}`, authData)
       .pipe(
-        // failure
+        // handle failure
+        // operator(() => {})
         catchError(this.handleError),
-        // success
+        // handle success
         tap((authResponseData: AuthResponseData) => {
           this.handleAuthToken(authResponseData);
         })
@@ -108,7 +109,7 @@ export class AuthService {
     this.user.next(authenticatedUser);
 
     // start the timer
-    this.autoLogout(expiresInMS);
+    // this.autoLogout(expiresInMS);
   }
 
   // NOTE:
