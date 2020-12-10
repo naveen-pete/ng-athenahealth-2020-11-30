@@ -200,3 +200,10 @@ Authentication (Firebase)
 
 10-Dec-2020
 -----------
+User          Not Logged In     Logged In
+------------------------------------------
+Home          Visible           Visible
+Products      Not visible       Visible
+Sign up       Visible           Not visible
+Login         Visible           Not visible
+Logout        Not visible       Visible
