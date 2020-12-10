@@ -109,7 +109,7 @@ export class AuthService {
     this.user.next(authenticatedUser);
 
     // start the timer
-    // this.autoLogout(expiresInMS);
+    this.autoLogout(expiresInMS);
   }
 
   // NOTE:
